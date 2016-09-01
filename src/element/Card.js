@@ -24,16 +24,21 @@ export default class Card extends AbstractElement {
 		var $headerTags = window.jQuery('<ul></ul>').attr({
 			'class': config.cardPrefix+'header-tags'
 		})
-		if(data.info.market) {
-			$headerTags.append(window.jQuery('<li></li>').text(data.info.market));
+		if(data.info.markets) {
+			$headerTags.append(window.jQuery('<li></li>').text(data.info.markets.slice(0, 1).join(',')));
 		}
+		$header.append($headerTags);
+
+		var $headerTags = window.jQuery('<ul></ul>').attr({
+			'class': config.cardPrefix+'header-tags'
+		})
 		if(data.info.country) {
 			$headerTags.append(window.jQuery('<li></li>').text(data.info.country));
 		}
 
 		$header.append($headerTags);
 
-		var $facts = window.jQuery('<div></div>').addClass(config.cardPrefix+'facts');
+		var $facts = window.jQuery('<div></div>').addClass(config.cardPrefix+'facts').text(data.profile.tagline);
 		var $factsTags = window.jQuery('<ul></ul>').attr({
 			'class': config.cardPrefix+'facts-tags'
 		});
